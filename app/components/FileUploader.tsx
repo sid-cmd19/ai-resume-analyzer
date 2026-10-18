@@ -12,8 +12,6 @@ const FileUploader = ({ onFileSelect, selectedFile }: FileUploaderProps) => {
     (acceptedFiles: File[] | null) => {
       const file = acceptedFiles ? acceptedFiles[0] : null;
       onFileSelect?.(file);
-
-      console.log(acceptedFiles);
     },
     [onFileSelect],
   );
@@ -25,8 +23,7 @@ const FileUploader = ({ onFileSelect, selectedFile }: FileUploaderProps) => {
       maxSize: 20 * 1024 * 1024,
     });
 
-  console.log("acceptedFiles", acceptedFiles);
-  const file = selectedFile ? acceptedFiles[0] || null : null
+  const file = selectedFile ? acceptedFiles[0] || null : null;
 
   return (
     <div className="w-full gradient-border cursor-pointer">
@@ -37,12 +34,11 @@ const FileUploader = ({ onFileSelect, selectedFile }: FileUploaderProps) => {
             <div
               className="uploader-selected-file"
               onClick={(e) => {
-                console.log("inside uploader selected file")
                 e.stopPropagation();
               }}
             >
               <img src="/images/pdf.png" alt="pdf" className="size-10" />
-              <div className="flex items-center space-x-3" >
+              <div className="flex items-center space-x-3">
                 <div className="">
                   <p className="text-sm text-gray-700 font-medium truncate max-w-xs">
                     {file.name}
@@ -54,8 +50,7 @@ const FileUploader = ({ onFileSelect, selectedFile }: FileUploaderProps) => {
               </div>
               <button
                 onClick={(e) => {
-                console.log("inside remove button")
-                    e.stopPropagation()
+                  e.stopPropagation();
                   onFileSelect?.(null);
                 }}
                 className="p-2 cursor-pointer"

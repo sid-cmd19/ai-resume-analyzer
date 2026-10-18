@@ -13,8 +13,6 @@ const Upload = () => {
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsProcessing(true);
-    setStatusText("Analyzing your resume...");
   }
     
   return (
@@ -51,7 +49,7 @@ const Upload = () => {
                     </div>
                     <div className="form-div">
                         <label htmlFor="uploader">Upload Resume</label>
-                        <FileUploader onFileSelect={handleFileSelect} />
+                        <FileUploader onFileSelect={handleFileSelect} selectedFile={file} />
                     </div>
                     <button type="submit" className="primary-button">Analyze Resume</button>
                 </form>
