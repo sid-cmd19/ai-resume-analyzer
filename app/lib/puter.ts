@@ -337,7 +337,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
       return;
     }
 
-    // Below commented code is used to print the list of available claude models 
+    // Below commented code is used to print the list of available claude models
 
     // const models = await puter.ai.listModels();
     // console.table(
@@ -367,7 +367,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
         },
       ],
       { model: "claude-sonnet-4-6" },
-      true
+      true,
     ) as Promise<AIResponse | undefined>;
   };
 
