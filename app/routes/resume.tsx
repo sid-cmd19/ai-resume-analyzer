@@ -2,6 +2,9 @@ import { Link, useNavigate, useParams } from "react-router";
 import type { Route } from "./+types/auth";
 import { useEffect, useState } from "react";
 import { usePuterStore } from "~/lib/puter";
+import Summary from "~/components/Summary";
+import Ats from "~/components/Ats";
+import Details from "~/components/Details";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -19,13 +22,14 @@ const resume = () => {
 
   const [imageUrl, setImageUrl] = useState<string>("");
   const [resumeUrl, setResumeUrl] = useState<string>("");
-  const [feedback, setFeedback] = useState<string>("");
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!isLoading && !auth.isAuthenticated) navigate(`/auth?next=/resume/${id}`);
-  }, [isLoading])
+    if (!isLoading && !auth.isAuthenticated)
+      navigate(`/auth?next=/resume/${id}`);
+  }, [isLoading]);
 
   useEffect(() => {
     const loadResume = async () => {
@@ -53,8 +57,8 @@ const resume = () => {
     };
     loadResume();
   }, []);
-  console.log("isLoading", isLoading)
-  if(isLoading) return (<div>Loading...</div>);
+  console.log("isLoading", isLoading);
+  if (isLoading) return <div>Loading...</div>;
   return (
     <main className="pt-0!">
       <nav className="resume-nav">
@@ -83,9 +87,20 @@ const resume = () => {
         <section className="feedback-section max-sm:w-full sm:h-[100vh]">
           <h2 className="text-4xl text-black! font-bold">Review Resume</h2>
           {feedback ? (
-            <div className="flex flex-col gap-8 animate-in duration-1000">Summary ATS Details</div>
+            <div className="flex flex-col gap-8 animate-in duration-1000">
+              <Summary feedback={feedback} />
+              <Ats
+                score={feedback.ATS.score || 0}
+                suggestions={feedback?.ATS.tips || {}}
+              />
+              <Details feedback={feedback} />
+            </div>
           ) : (
-            <img src="/images/resume-scan-2.gif" alt="resume scan" className="w-full" />
+            <img
+              src="/images/resume-scan-2.gif"
+              alt="resume scan"
+              className="w-full"
+            />
           )}
         </section>
       </div>
