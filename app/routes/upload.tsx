@@ -94,6 +94,7 @@ const Upload = () => {
     setStatusText("Analyzing complete, redirecting...")
     // setIsProcessing(false);
     console.log("data is here",data)
+    navigate(`/resume/${uuid}`)
   };
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
