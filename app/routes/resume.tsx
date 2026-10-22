@@ -3,7 +3,7 @@ import type { Route } from "./+types/auth";
 import { useEffect, useState } from "react";
 import { usePuterStore } from "~/lib/puter";
 import Summary from "~/components/Summary";
-import Ats from "~/components/Ats";
+import ATS from "~/components/ATS";
 import Details from "~/components/Details";
 
 export function meta({}: Route.MetaArgs) {
@@ -89,9 +89,9 @@ const resume = () => {
           {feedback ? (
             <div className="flex flex-col gap-8 animate-in duration-1000">
               <Summary feedback={feedback} />
-              <Ats
+              <ATS
                 score={feedback.ATS.score || 0}
-                suggestions={feedback?.ATS.tips || {}}
+                suggestions={feedback?.ATS.tips || []}
               />
               <Details feedback={feedback} />
             </div>
