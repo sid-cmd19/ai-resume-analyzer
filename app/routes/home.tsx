@@ -54,7 +54,7 @@ export default function Home() {
         {!isLoadingResumes && resumes.length === 0 ? (
           <h2>No resumes found. Upload your first resume to get feedback.</h2>
         ) : (
-          <h2>Review your sub,issions & check AI-Powered feedback</h2>
+          <h2>Review your submissions & check AI-Powered feedback</h2>
         )}
         {isLoadingResumes && (
           <div className="flex flex-col items-center justify-center">
