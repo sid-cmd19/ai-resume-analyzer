@@ -7,3 +7,5 @@
 /build/
 
 /notes.md
+
+/app/routes/wipe.tsx
