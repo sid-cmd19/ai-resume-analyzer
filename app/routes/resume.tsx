@@ -49,15 +49,10 @@ const resume = () => {
       setImageUrl(imageUrl);
 
       setFeedback(data?.feedback);
-      console.log("imageUrl, resumeUrl, feedback data is here", {
-        imageUrl,
-        resumeUrl,
-        feedback: data.feedback,
-      });
     };
     loadResume();
   }, []);
-  console.log("isLoading", isLoading);
+
   if (isLoading) return <div>Loading...</div>;
   return (
     <main className="pt-0!">

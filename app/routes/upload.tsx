@@ -31,13 +31,6 @@ const Upload = () => {
     jobDescription,
     file,
   }: HandleAnalyze) => {
-    console.log(
-      "companyName, jobTitle, jobDescription: ",
-      companyName,
-      jobTitle,
-      jobDescription,
-      file,
-    );
 
     setIsProcessing(true);
     setStatusText("Uploading thr file...");
@@ -93,12 +86,10 @@ const Upload = () => {
     await kv.set(`resume:${uuid}`, JSON.stringify(data));
     setStatusText("Analyzing complete, redirecting...")
     // setIsProcessing(false);
-    console.log("data is here",data)
     navigate(`/resume/${uuid}`)
   };
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
-    console.log("form submitted");
     e.preventDefault();
     const form = e.currentTarget.closest("form");
     if (!form || !file) return;
@@ -116,7 +107,6 @@ const Upload = () => {
     });
   };
 
-  console.log("file in upload.tsx", file);
 
   return (
     <main className="bg-[url('/images/bg-main.svg')] bg-cover">

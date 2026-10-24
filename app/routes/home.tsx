@@ -36,7 +36,6 @@ export default function Home() {
       const paresedResumes = resumes?.map(
         (resume) => JSON.parse(resume.value) as Resume,
       );
-      console.log("paresedResumes in useEffect in loadResumes", paresedResumes);
       setResumes(paresedResumes ?? []);
       setIsLoadingResumes(false);
     };

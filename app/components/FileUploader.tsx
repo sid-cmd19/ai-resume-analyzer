@@ -23,8 +23,6 @@ const FileUploader = ({ onFileSelect, selectedFile }: FileUploaderProps) => {
       maxSize: 20 * 1024 * 1024,
     });
 
-  console.log(acceptedFiles, "acceptedFiles");
-
   const file = selectedFile ? acceptedFiles[0] || null : null;
 
   return (
